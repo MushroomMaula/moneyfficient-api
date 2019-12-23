@@ -1,4 +1,5 @@
 from sqlalchemy import Boolean, Integer, Column, String
+from sqlalchemy.orm import relationship
 
 from app.db.base_class import Base
 
@@ -9,3 +10,4 @@ class User(Base):
     email = Column(String(64), unique=True)
     password = Column(String(512))
     is_active = Column(Boolean, default=True)
+    expenses = relationship("Expense", back_populates="owner")
