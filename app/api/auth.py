@@ -13,7 +13,7 @@ router = APIRouter()
 def login(data: OAuth2PasswordRequestForm = Depends(), db=Depends(get_db)):
     email = data.username
     password = data.password
-    user = crud.user.get_user(email, db)
+    user = crud.user.get(email, db)
     if not user:
         raise InvalidCredentialsException
     elif not verify_password(password, user.password):

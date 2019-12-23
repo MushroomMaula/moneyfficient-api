@@ -8,7 +8,7 @@ from app import schemas
 
 
 @manager.user_loader
-def get_user(email: str, db: Session = None) -> Optional[User]:
+def get(email: str, db: Session = None) -> Optional[User]:
     # when used by the manager no db session is passed
     if db is None:
         db = SessionLocal()
@@ -18,7 +18,7 @@ def get_user(email: str, db: Session = None) -> Optional[User]:
     return user
 
 
-def create_user(db: Session, user_in: schemas.UserCreate):
+def create(db: Session, user_in: schemas.UserCreate):
     user_in.password = hash_password(user_in.password)
     user = User(**user_in.dict())
     db.add(user)

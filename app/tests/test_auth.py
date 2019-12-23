@@ -6,7 +6,7 @@ from app.tests.utils import random_string
 def test_login(client, user_data, db):
     # create user in db
     user_data.password = 'hunter2'
-    crud.user.create_user(db, user_data)
+    crud.user.create(db, user_data)
     resp = client.post(
         '/auth/login',
         data={
@@ -30,7 +30,7 @@ def test_invalid_user(client):
 
 
 def test_invalid_password(client, user_data, db):
-    crud.user.create_user(db, user_data)
+    crud.user.create(db, user_data)
     resp = client.post(
         '/auth/login',
         data={'username': user_data.email, 'password': 'wrongpassword'}

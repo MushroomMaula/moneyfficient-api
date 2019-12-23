@@ -10,8 +10,8 @@ router = APIRouter()
 
 @router.post('/register', response_model=schemas.User, status_code=201)
 def register(user: UserCreate, db=Depends(get_db)):
-    if crud.user.get_user(user.email, db):
+    if crud.user.get(user.email, db):
         raise HTTPException(
             409, 'A User with this email already exists'
         )
-    return crud.user.create_user(db, user)
+    return crud.user.create(db, user)
