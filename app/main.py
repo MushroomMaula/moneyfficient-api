@@ -1,5 +1,5 @@
 from fastapi import FastAPI, Security
-from app.api import auth, user
+from app.api import auth, user, expense
 
 app = FastAPI()
 
@@ -14,6 +14,12 @@ app.include_router(
     user.router,
     prefix='/user',
     tags=["users"]
+)
+
+app.include_router(
+    expense.router,
+    prefix='/expenses',
+    tags=["expenses"]
 )
 
 
