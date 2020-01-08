@@ -23,3 +23,11 @@ def create(expense_in: schemas.ExpenseCreate, owner_id: int, db: Session):
     db.commit()
     db.refresh(expense)
     return expense
+
+
+def update(expense_id, expense_in: schemas.ExpenseUpdate, db: Session):
+    expense = db.query(Expense).filter(
+        Expense.id == expense_id
+    ).update(expense_in.dict(exclude_none=True))
+    db.commit()
+    return expense
