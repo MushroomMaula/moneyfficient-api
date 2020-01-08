@@ -12,6 +12,24 @@ def test_create(client, expense_data_factory, access_headers):
     assert resp.status_code == 201
 
 
+def test_update(client, db_expense_factory, expense_data_factory, access_headers):
+    user, headers = access_headers
+    # create expense to update
+    before = db_expense_factory(2, user).pop(0)
+    data = expense_data_factory()
+    data.value = None
+    resp = client.put(
+        f'expenses/{before.id}',
+        headers=headers,
+        json=json.loads(data.json())
+    )
+    after = resp.json()
+    assert after['category'] == data.category
+    assert after['date'] == str(data.date)
+
+
+
+
 def test_get_by_id(client, db_expense_factory, access_headers):
     user, headers = access_headers
     expense = db_expense_factory(1, user).pop()
