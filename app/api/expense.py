@@ -29,7 +29,7 @@ def get(expense_id: int, user=Depends(manager), db=Depends(get_db)):
     return expense
 
 
-@router.put('/{expense_id}', response_model=schemas.Expense, status_code=204)
+@router.put('/{expense_id}', status_code=204)
 def edit(expense_id: int, data: schemas.ExpenseUpdate, user=Depends(manager), db=Depends(get_db)):
     expense = crud.expense.get(expense_id, db)
     if expense.owner_id != user.id:
@@ -37,6 +37,6 @@ def edit(expense_id: int, data: schemas.ExpenseUpdate, user=Depends(manager), db
     crud.expense.update(expense.id, data, db)
 
 
-@router.delete('/{expense_id}', response_model=schemas.Expense, status_code=204)
+@router.delete('/{expense_id}', status_code=204)
 def delete(expense_id: int, user=Depends(manager), db=Depends(get_db)):
     pass
