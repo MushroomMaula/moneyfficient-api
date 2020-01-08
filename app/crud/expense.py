@@ -4,7 +4,6 @@ from sqlalchemy.orm import Session
 
 from app import schemas
 from app.db_models.expense import Expense
-from app.db_models.user import User
 
 
 def get(expense_id: int, db: Session) -> Expense:
