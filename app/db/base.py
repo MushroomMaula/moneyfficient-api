@@ -4,6 +4,7 @@ from sqlalchemy import create_engine
 from sqlalchemy.orm import sessionmaker, Session
 
 from .base_class import Base
+# noinspection PyUnresolvedReferences
 from app.db_models.user import User
 from app.core import Config
 
