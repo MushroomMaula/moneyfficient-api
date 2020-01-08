@@ -27,6 +27,15 @@ def test_update(client, db_expense_factory, expense_data_factory, access_headers
     assert resp.status_code == 204
 
 
+def test_delete(client, db_expense_factory, access_headers):
+    user, headers = access_headers
+    expense = db_expense_factory(1, user).pop()
+    resp = client.delete(
+        f'expenses/{expense.id}',
+        headers=headers
+    )
+    assert resp.status_code == 204
+
 
 def test_get_by_id(client, db_expense_factory, access_headers):
     user, headers = access_headers
