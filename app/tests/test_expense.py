@@ -23,10 +23,8 @@ def test_update(client, db_expense_factory, expense_data_factory, access_headers
         headers=headers,
         json=json.loads(data.json())
     )
-    after = resp.json()
-    assert after['category'] == data.category
-    assert after['date'] == str(data.date)
 
+    assert resp.status_code == 204
 
 
 
