@@ -42,5 +42,4 @@ def delete(expense_id: int, user=Depends(manager), db=Depends(get_db)):
     expense = crud.expense.get(expense_id, db)
     if expense.owner_id != user.id:
         raise ACCESS_DENIED_ERROR
-    db.delete(expense)
-    db.commit()
+    crud.expense.delete(expense, db)
