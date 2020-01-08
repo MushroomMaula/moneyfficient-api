@@ -39,4 +39,8 @@ def edit(expense_id: int, data: schemas.ExpenseUpdate, user=Depends(manager), db
 
 @router.delete('/{expense_id}', status_code=204)
 def delete(expense_id: int, user=Depends(manager), db=Depends(get_db)):
-    pass
+    expense = crud.expense.get(expense_id, db)
+    if expense.owner_id != user.id:
+        raise ACCESS_DENIED_ERROR
+    db.delete(expense)
+    db.commit()
