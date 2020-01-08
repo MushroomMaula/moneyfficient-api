@@ -34,7 +34,7 @@ def edit(expense_id: int, data: schemas.ExpenseUpdate, user=Depends(manager), db
     expense = crud.expense.get(expense_id, db)
     if expense.owner_id != user.id:
         raise ACCESS_DENIED_ERROR
-    exp = crud.expense.update(expense.id, data, db)
+    crud.expense.update(expense.id, data, db)
 
 
 @router.delete('/{expense_id}', response_model=schemas.Expense, status_code=204)
