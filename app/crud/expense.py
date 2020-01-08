@@ -30,4 +30,11 @@ def update(expense_id, expense_in: schemas.ExpenseUpdate, db: Session):
         Expense.id == expense_id
     ).update(expense_in.dict(exclude_none=True))
     db.commit()
-    return expense
+    return status
+
+
+def delete(expense_id: int, db: Session):
+    expense = get(expense_id, db)
+    status = db.delete(expense)
+    db.commit()
+    return status
