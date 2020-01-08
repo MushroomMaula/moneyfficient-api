@@ -1,5 +1,6 @@
 from decimal import Decimal
 from datetime import date
+from typing import List
 
 from pydantic import BaseModel, validator
 
@@ -23,3 +24,7 @@ class ExpenseCreate(BaseModel):
         if v < 0:
             raise ValueError("Value has to be positive!")
         return v
+
+
+class ExpenseList(ORMBase):
+    data: List[Expense]

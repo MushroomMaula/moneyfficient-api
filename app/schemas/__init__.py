@@ -1,2 +1,2 @@
 from .user import User, UserCreate
-from .expense import Expense, ExpenseCreate
+from .expense import Expense, ExpenseCreate, ExpenseList
