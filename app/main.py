@@ -1,7 +1,10 @@
 from fastapi import FastAPI, Security
 from app.api import auth, user, expense
+from app.frontend import frontend_server
 
 app = FastAPI()
+
+app.mount('/', frontend_server)
 
 app.include_router(
     auth.router,
