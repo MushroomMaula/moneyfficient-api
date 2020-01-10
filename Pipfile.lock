@@ -183,19 +183,19 @@
                 "all"
             ],
             "hashes": [
-                "sha256:3f626eda9b6edaa17c90c21a4d0d1a97a2a2fcba43a55f8c425b6b37e832c8bb",
-                "sha256:44712863ca3899eb812a6869a2efe02d6be6ae972968c76a43d82ec472788f17"
+                "sha256:6c9b919f2ed742d2ad78e6dce5ad1be761e67292b838ba114cb525ec784d10a1",
+                "sha256:7f8d795be11e21675b6843424b378fe2ec95a14cecba1c53c68471412cca28c7"
             ],
             "index": "pypi",
-            "version": "==0.45.0"
+            "version": "==0.46.0"
         },
         "fastapi-login": {
             "hashes": [
-                "sha256:233c7b6624dbddf7610fafb8b2e15fc916adf2578134e2f402cba09fecfb2504",
-                "sha256:712a90c527673ffd4f179ca39ccfdadd6f14d2b50f28f8dd4981ff8c3c0184ae"
+                "sha256:01554a119e07b6989575c8ad749791f64d7c74e96a74a3388ce7d245e249c1e5",
+                "sha256:f8c1901a607ec38653a0a56fd231db319aec3b1c2c582564d7144f0a7b2224a5"
             ],
             "index": "pypi",
-            "version": "==1.1.0"
+            "version": "==1.2.1"
         },
         "graphene": {
             "hashes": [
