@@ -23,6 +23,7 @@ class Settings(BaseSettings):
     secret: str
     first_superuser_email: str = None
     first_superuser_password: str = None
+    first_superuser_username: str = 'admin'
 
 
 Config = Settings()
