@@ -1,7 +1,7 @@
 import contextlib
 
 from sqlalchemy import create_engine
-from sqlalchemy.orm import sessionmaker, Session
+from sqlalchemy.orm import sessionmaker, Session, scoped_session
 
 from .base_class import Base
 # noinspection PyUnresolvedReferences
@@ -10,6 +10,9 @@ from app.db_models.expense import Expense
 from app.core import Config
 
 engine = create_engine(Config.database_url)
+db_session = scoped_session(
+    sessionmaker(autocommit=False, autoflush=False, bind=engine)
+)
 SessionLocal = sessionmaker(autocommit=False, autoflush=False, bind=engine)
 
 
