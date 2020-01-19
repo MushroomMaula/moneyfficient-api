@@ -9,6 +9,9 @@ from alembic import context
 # access to the values within the .ini file in use.
 config = context.config
 
+from app.core import Config  # noqa
+config.set_main_option('sqlalchemy.url', Config.database_url)
+
 # Interpret the config file for Python logging.
 # This line sets up loggers basically.
 fileConfig(config.config_file_name)
@@ -18,7 +21,6 @@ fileConfig(config.config_file_name)
 # from myapp import mymodel
 # target_metadata = mymodel.Base.metadata
 # target_metadata = None
-
 from app.db.base import Base  # noqa
 target_metadata = Base.metadata
 
