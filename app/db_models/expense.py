@@ -2,7 +2,7 @@ from sqlalchemy import Integer, Column, Numeric, Date, DateTime, String, Foreign
 from sqlalchemy.orm import relationship
 from sqlalchemy.sql.functions import now
 
-from app.db.base import Base
+from app.db.base_class import Base
 
 
 class Expense(Base):
