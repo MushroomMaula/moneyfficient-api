@@ -4,7 +4,7 @@ from pydantic import BaseSettings
 from dotenv import load_dotenv
 
 
-project_root = Path.cwd()
+project_root = Path(__file__)
 
 # go up the path until we are in the app dir
 # where the env file should be
@@ -18,9 +18,11 @@ load_dotenv(project_root / '.env')
 
 class Settings(BaseSettings):
 
-    database_url: str = 'sqlite://'  # in memory
+    database_url: str = 'sqlite://'
     testing: bool = False
     secret: str
+    first_superuser_email: str = None
+    first_superuser_password: str = None
 
 
 Config = Settings()
