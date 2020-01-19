@@ -6,6 +6,7 @@ from sqlalchemy.orm import sessionmaker, Session
 from .base_class import Base
 # noinspection PyUnresolvedReferences
 from app.db_models.user import User
+from app.db_models.expense import Expense
 from app.core import Config
 
 engine = create_engine(Config.database_url)
