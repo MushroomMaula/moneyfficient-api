@@ -1,0 +1,12 @@
+.card {
+    color: black;
+    padding: 1rem;
+    width: 100%;
+    max-width: 440px;
+    margin: auto;
+    background-color: white;
+    border-radius: 0.25rem;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+
+    text-align: center;
+}
