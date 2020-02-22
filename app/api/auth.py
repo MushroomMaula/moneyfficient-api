@@ -1,7 +1,7 @@
 from fastapi import APIRouter, Depends
 from fastapi.security import OAuth2PasswordRequestForm
-from fastapi_login.exceptions import InvalidCredentialsException
 
+from app.core.errors import INVALID_CREDENTIALS_ERROR
 from app.core.security import manager, verify_password
 from app import crud
 from app.db.base import get_db
@@ -15,9 +15,9 @@ def login(data: OAuth2PasswordRequestForm = Depends(), db=Depends(get_db)):
     password = data.password
     user = crud.user.get(email, db)
     if not user:
-        raise InvalidCredentialsException
+        raise INVALID_CREDENTIALS_ERROR
     elif not verify_password(password, user.password):
-        raise InvalidCredentialsException
+        raise INVALID_CREDENTIALS_ERROR
 
     access_token = manager.create_access_token(
         data={'sub': user.email}

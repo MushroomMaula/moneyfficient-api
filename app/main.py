@@ -2,11 +2,12 @@ from fastapi import FastAPI, Security
 from starlette.responses import RedirectResponse
 
 from app.api import auth, user, expense
-from app.frontend import frontend_server
+from app.frontend import frontend_server, static_server
 
 app = FastAPI()
 
 app.mount('/app', frontend_server)
+app.mount('/static', static_server, name='static')
 
 
 @app.get('/')
@@ -36,4 +37,4 @@ app.include_router(
 
 if __name__ == '__main__':
     import uvicorn
-    uvicorn.run(app, host='0.0.0.0')
+    uvicorn.run(app)
