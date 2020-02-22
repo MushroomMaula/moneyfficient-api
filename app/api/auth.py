@@ -5,11 +5,12 @@ from app.core.errors import INVALID_CREDENTIALS_ERROR
 from app.core.security import manager, verify_password
 from app import crud
 from app.db.base import get_db
+from app.schemas import Token
 
 router = APIRouter()
 
 
-@router.post('/login')
+@router.post('/login', response_model=Token)
 def login(data: OAuth2PasswordRequestForm = Depends(), db=Depends(get_db)):
     email = data.username
     password = data.password
