@@ -9,7 +9,7 @@ from app.db_models.user import User
 from app.db_models.expense import Expense
 from app.core import Config
 
-engine = create_engine(Config.database_url)
+engine = create_engine(Config.database_url, connect_args={"check_same_thread": False})
 db_session = scoped_session(
     sessionmaker(autocommit=False, autoflush=False, bind=engine)
 )
