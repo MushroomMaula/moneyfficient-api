@@ -1,13 +1,13 @@
 {
   "private": true,
-  "name": "preact-frontend",
+  "name": "preact-test",
   "version": "0.0.0",
   "license": "MIT",
   "scripts": {
     "start": "per-env",
     "start:production": "npm run -s serve",
     "start:development": "npm run -s dev",
-    "build": "preact build",
+    "build": "preact build --no-prerender",
     "serve": "preact build && serve build --single",
     "dev": "preact watch",
     "lint": "eslint src",
@@ -33,9 +33,12 @@
     "serve": "^11.1.0"
   },
   "dependencies": {
+    "before-build-webpack": "^0.2.9",
     "preact": "^10.0.1",
     "preact-render-to-string": "^5.1.0",
-    "preact-router": "^3.0.0"
+    "preact-router": "^3.0.0",
+    "wouter": "^2.4.0",
+    "wouter-preact": "^2.4.0"
   },
   "jest": {
     "preset": "jest-preset-preact",

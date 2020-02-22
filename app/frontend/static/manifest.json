@@ -1,6 +1,6 @@
 {
-  "name": "preact-frontend",
-  "short_name": "preact-frontend",
+  "name": "preact-test",
+  "short_name": "preact-test",
   "start_url": "/",
   "display": "standalone",
   "orientation": "portrait",
