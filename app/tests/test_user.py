@@ -8,6 +8,7 @@ def test_create_user(client, user_data_factory):
         json=user_data.dict()
     )
     assert resp.status_code == 201
+    assert 'login_credentials' in resp.json().keys()
 
 
 def test_user_exists(client, db_user_factory):
