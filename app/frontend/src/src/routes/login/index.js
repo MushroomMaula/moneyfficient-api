@@ -3,6 +3,7 @@ import { useState } from 'preact/hooks';
 import { api } from '../../services/auth';
 import { useContext } from 'preact/compat';
 import { AuthContext } from '../../index';
+import {Link} from "wouter-preact";
 
 
 const Login = () => {
@@ -15,7 +16,6 @@ const Login = () => {
 	};
 	const [data, setData] = useState(initialState);
 	const { dispatch } = useContext(AuthContext);
-
 	function handleDataChange( event ) {
 		event.preventDefault();
 		// use the name property the of the input field to change the data
@@ -30,7 +30,6 @@ const Login = () => {
 			// dispatch successful login to AuthContext
 			.then(
 				res => {
-					console.log('Res', res);
 					dispatch({
 						type: 'login',
 						payload: res
@@ -75,6 +74,7 @@ const Login = () => {
 			<button onClick={handleSubmit} disabled={data.isSubmitting}>
 				{ data.isSubmitting ? 'Logging in...' : 'Log In' }
 			</button>
+			<Link href="/app/register">No account yet? Register here!</Link>
 		</form>
 	);
 };
