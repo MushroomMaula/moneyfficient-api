@@ -17,7 +17,6 @@ templates = Jinja2Templates(str(FRONTEND_DIR / 'templates'))
 @frontend_server.get('/')
 @frontend_server.get('/{path}')  # redirect all calls to the preact frontend
 def index(request: Request, path: str = None):
-    print(path)
     return templates.TemplateResponse(
         'index.html',
         {'request': request}
