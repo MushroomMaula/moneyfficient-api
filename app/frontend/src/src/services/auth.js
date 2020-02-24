@@ -7,8 +7,8 @@ class API {
 	}
 
 	async makeRequest (endpoint='', method='GET', bodyParams=null) {
-		const response = await fetch(
-			this.baseUrl+endpoint,
+		return await fetch(
+			this.baseUrl + endpoint,
 			{
 				method: method,
 				headers: {
@@ -18,7 +18,6 @@ class API {
 				body: bodyParams
 			}
 		);
-		return await response.json();
 	}
 }
 
@@ -26,7 +25,6 @@ class API {
 class TestAPI extends API {
 	constructor () {
 		super(`${document.location.protocol}//${document.location.hostname}:${document.location.port}/`);
-		this.counter = 0;
 	}
 
 	async login(loginData) {
@@ -50,23 +48,19 @@ class TestAPI extends API {
 		}
 	}
 
-	async createUser () {
-		this.counter += 1;
-		return await this.makeRequest(
-			'/users',
+	async createUser (registerData) {
+		console.log(registerData);
+		const response =  await this.makeRequest(
+			'user/register',
 			'POST',
-			{ id: this.counter, name: `User #${this.counter}`, password: 'fake-pw' }
+			JSON.stringify(registerData)
 		);
-	}
-
-	async getUserById (id) {
-		const data = await this.makeRequest(
-			`/users?orderKey=id&filterValue=${id}`
-		);
-		if (!data.ok) {
-			return null;
+		const data = await response.json();
+		if (!response.ok) {
+			throw new Error(data.detail);
+		} else {
+			return data;
 		}
-		return data.result;
 	}
 }
 
