@@ -4,6 +4,7 @@ import { Route, Switch, useLocation } from 'wouter-preact';
 
 import Login from './routes/login';
 import Home from './routes/home';
+import Register from "./routes/register";
 
 
 export const AuthContext = createContext({});
