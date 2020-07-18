@@ -7,6 +7,7 @@ from app.db.base_class import Base
 
 class Expense(Base):
     id = Column(Integer, primary_key=True)
+    name = Column(String(32))
     value = Column(Numeric)
     date = Column(Date)
     created_on = Column(DateTime, server_default=now())

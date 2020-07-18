@@ -9,6 +9,7 @@ from .base import ORMBase
 
 class Expense(ORMBase):
     id: int
+    name: str
     value: Decimal
     date: date
     category: str
