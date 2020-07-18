@@ -16,6 +16,7 @@ class Expense(ORMBase):
 
 
 class ExpenseCreate(BaseModel):
+    name: str
     value: Decimal
     date: date
     category: str
@@ -28,6 +29,7 @@ class ExpenseCreate(BaseModel):
 
 
 class ExpenseUpdate(ORMBase):
+    name: Optional[str]
     value: Optional[Decimal]
     date: Optional[date]
     category: Optional[str]

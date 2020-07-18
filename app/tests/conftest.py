@@ -46,6 +46,7 @@ def user_data_factory() -> Callable:
 def expense_data_factory() -> Callable:
     def f() -> schemas.ExpenseCreate:
         return schemas.ExpenseCreate(
+            name=random_string(),
             value=random_float(),
             date=fake.date_object(),
             category=fake.random_element(elements=["Food", "Drink", "Gas", "Gift"])
