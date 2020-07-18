@@ -1,18 +1,8 @@
-from fastapi import FastAPI, Security
-from starlette.responses import RedirectResponse
+from fastapi import FastAPI
 
 from app.api import auth, user, expense
-from app.frontend import frontend_server, static_server
 
 app = FastAPI()
-
-app.mount('/app', frontend_server)
-app.mount('/static', static_server, name='static')
-
-
-@app.get('/')
-def redirect_to_app():
-    return RedirectResponse('/app/')
 
 
 app.include_router(
